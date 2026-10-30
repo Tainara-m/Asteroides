@@ -1,0 +1,132 @@
+@font-face {
+  font-family: 'Asteroides';
+  src: url('assets/Doctor\ Glitch.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+h1 {
+  font-family: 'Asteroides', Arial, sans-serif;
+  font-size: clamp(40px, 9vw, 80px);
+  color: greenyellow;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Asteroides', Arial, sans-serif;
+  font-size: 35px;
+  color: rgb(255, 0, 0);
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 4px 12px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+p.hint { font-size: 16px; color: #9fb4d0; margin-top: 14px; }
+p.start { margin-top: 22px; animation: blink 1.4s ease-in-out infinite; }
+.c-shield { color: #33ddff; }
+.c-rapid { color: #ffdd33; }
+.c-triple { color: #ff55dd; }
+.c-life { color: #66ff66; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+canvas {
+  display: block;
+  background: black;
+}
+
+#startScreen, #gameOverScreen, #pauseScreen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#gameOverScreen { display: none; background: rgba(0, 0, 0, 0.75); }
+#pauseScreen { display: none; background: rgba(0, 0, 0, 0.55); }
+
+#topIcons {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  display: flex;
+  gap: 14px;
+}
+
+#topIcons span {
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+#topIcons span:hover { transform: scale(1.15); }
+#topIcons span:active { transform: scale(0.92); }
+#pauseIcon { display: none; }
+body.playing #pauseIcon { display: inline; }
+
+/* Controles de toque (só aparecem em telas sensíveis ao toque) */
+#touchControls {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 18px 18px;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#touchControls .pad { display: flex; gap: 12px; align-items: flex-end; }
+
+#touchControls button {
+  pointer-events: auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2px solid rgba(77, 225, 255, 0.7);
+  background: rgba(10, 30, 50, 0.45);
+  color: #4de1ff;
+  font-size: 26px;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#touchControls button:active { background: rgba(77, 225, 255, 0.35); }
+#touchControls button.fire { width: 84px; height: 84px; border-color: rgba(255, 100, 120, 0.8); color: #ff6478; }
+
+@media (pointer: coarse) {
+  #touchControls { display: flex; }
+  body:not(.playing) #touchControls { display: none; }
+}
+
+@media (max-width: 600px) {
+  p { font-size: 16px; }
+}

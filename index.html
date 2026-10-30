@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Asteroids Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="topIcons">
+    <span id="pauseIcon" title="Pausar (P)">⏸</span>
+    <span id="muteIcon" title="Som (M)">🔊</span>
+  </div>
+
+  <div id="startScreen">
+    <h1>Asteroids Game</h1>
+    <p>⬅ ➡ ou A / D para girar &nbsp;•&nbsp; ⬆ ou W para acelerar &nbsp;•&nbsp; ⬇ ou S para frear</p>
+    <p>Espaço para atirar (segure para atirar sem parar)</p>
+    <p>H para hiperespaço (arriscado!) &nbsp;•&nbsp; P para pausar &nbsp;•&nbsp; M para mutar</p>
+    <p class="hint">Pegue os power-ups: <b class="c-shield">S</b> escudo, <b class="c-rapid">R</b> tiro rápido, <b class="c-triple">3</b> tiro triplo, <b class="c-life">+</b> vida</p>
+    <p class="start">Pressione <strong>Enter</strong> (ou toque na tela) para começar</p>
+  </div>
+
+  <div id="pauseScreen">
+    <h2>Pausado</h2>
+    <p>Pressione <strong>P</strong> ou <strong>ESC</strong> para continuar</p>
+  </div>
+
+  <div id="gameOverScreen">
+    <h2>Game Over</h2>
+    <p id="finalScore">Final Score: 0</p>
+    <p id="recordMsg"></p>
+    <p>Pressione <strong>Enter</strong> para jogar de novo ou <strong>ESC</strong> para o menu</p>
+  </div>
+
+  <div id="touchControls">
+    <div class="pad">
+      <button data-key="ArrowLeft" aria-label="Girar à esquerda">◀</button>
+      <button data-key="ArrowRight" aria-label="Girar à direita">▶</button>
+    </div>
+    <div class="pad">
+      <button data-key="Hyper" aria-label="Hiperespaço">H</button>
+      <button data-key="ArrowUp" aria-label="Acelerar">▲</button>
+      <button data-key="Space" class="fire" aria-label="Atirar">●</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
